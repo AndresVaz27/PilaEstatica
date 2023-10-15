@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Collections;
+using System.Reflection.Metadata;
 
 class Program
 {
     static void Main(string[] args)
     {
         const int MaxSize = 5; // Tamaño máximo de la pila
-        int[] stack = new int[MaxSize];
+        int[] stack = new int[MaxSize];  Stack stackClass = new Stack();
         int top = -1; // Inicialmente, la pila está vacía
+        
 
         while (true)
         {
@@ -25,11 +28,12 @@ class Program
                     if (top < MaxSize - 1)
                     {
                         Console.Write("Ingresa un valor para agregar a la pila: ");
-                        int value = int.Parse(Console.ReadLine());
+                        var value = Console.ReadLine();
                         top++;
-                        stack[top] = value;
+                        stack[top] = int.Parse(value); //stackClass.Push(value);
                         Console.WriteLine($"Elemento {value} agregado a la pila.");
                     }
+
                     else
                     {
                         Console.WriteLine("La pila está llena. No se puede agregar más elementos.");
@@ -39,7 +43,7 @@ class Program
                 case 2:
                     if (top >= 0)
                     {
-                        int removedItem = stack[top];
+                        int removedItem = stack[top];  /*var removedItem = stackClass.Pop();*/
                         top--;
                         Console.WriteLine($"Elemento {removedItem} eliminado de la pila.");
                     }
@@ -54,6 +58,10 @@ class Program
                     for (int i = top; i >= 0; i--)
                     {
                         Console.WriteLine(stack[i]);
+                        //while (stackClass.Count != 0)
+                        //{
+                        //    Console.WriteLine(stackClass.Pop());
+                        //}
                     }
                     break;
 
